@@ -24,7 +24,7 @@
 
 ![Generated Videos](outputs/output_1.gif)
 
-*Videos generated from pure noise using Rectified Flow sampling (50 steps)*
+*Videos generated from pure noise using Rectified Flow sampling (200 steps)*
 
 </div>
 

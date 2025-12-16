@@ -22,7 +22,9 @@
 
 <div align="center">
 
-![Generated Videos](outputs/output_1.gif)
+| Sample 1 | Sample 2 | Sample 3 |
+|:--------:|:--------:|:--------:|
+| ![Comparison 1](outputs/output_5.gif) | ![Comparison 2](outputs/output_6.gif) | ![Comparison 3](outputs/output_7.gif) |
 
 *Videos generated from pure noise using Rectified Flow sampling (200 steps)*
 

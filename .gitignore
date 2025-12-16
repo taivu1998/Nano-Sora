@@ -1,7 +1,6 @@
 # Heavy data files and folders
 data/
 logs/
-outputs/
 
 # Model checkpoints
 *.pt

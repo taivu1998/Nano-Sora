@@ -36,7 +36,7 @@
 |:--------:|:--------:|:--------:|
 | ![Comparison 1](outputs/output_2.gif) | ![Comparison 2](outputs/output_3.gif) | ![Comparison 3](outputs/output_4.gif) |
 
-*Left: Generated • Right: Ground Truth — The model learns to capture digit motion dynamics*
+*Top: Ground Truth • Bottom: Generated — The model learns to capture digit motion dynamics*
 
 </div>
 

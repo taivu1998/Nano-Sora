@@ -1,0 +1,48 @@
+# Nano-Sora Configuration
+# ========================
+# A minimal Diffusion Transformer for Video Generation using Rectified Flow
+# Target: Moving MNIST (16 frames, 64x64)
+# Convergence: < 4 Hours on T4/A100
+
+experiment:
+  name: "nano_sora_flow"
+  seed: 42
+  output_dir: "./logs"
+  save_every: 10            # Save checkpoint every N epochs
+
+data:
+  data_dir: "./data"        # Directory to store dataset
+  batch_size: 64            # Batch size (adjust based on GPU memory)
+  num_workers: 4            # Number of data loading workers
+  num_frames: 16            # Frames per video (cropped from 20 for power-of-2)
+  image_size: 64            # Spatial resolution (H=W)
+  train_split: 0.9          # Train/validation split ratio
+
+model:
+  # Spacetime Patch Size: (Time, Height, Width)
+  # Math: (16/2) * (64/8) * (64/8) = 8 * 8 * 8 = 512 Tokens
+  # Using larger patches (2,8,8) instead of (2,4,4) for faster training
+  patch_size: [2, 8, 8]
+  hidden_size: 384          # Transformer hidden dimension
+  depth: 8                  # Number of DiT blocks
+  num_heads: 6              # Number of attention heads
+  mlp_ratio: 4.0            # MLP expansion ratio
+  dropout: 0.0              # Dropout rate (0 for small datasets)
+
+training:
+  epochs: 100               # Number of training epochs
+  lr: 3.0e-4                # Learning rate (AdamW)
+  weight_decay: 0.01        # Weight decay for regularization
+  warmup_epochs: 5          # Learning rate warmup epochs
+  use_amp: true             # Mixed precision training (faster on modern GPUs)
+  grad_clip: 1.0            # Gradient clipping norm
+
+  # Validation
+  validate_every: 5         # Validate every N epochs
+
+  # Sampling (for inference)
+  flow_steps: 50            # Euler steps for ODE solving
+
+  # EMA (Exponential Moving Average)
+  use_ema: true             # Enable EMA for smoother weights
+  ema_decay: 0.9999         # EMA decay rate (higher = smoother)

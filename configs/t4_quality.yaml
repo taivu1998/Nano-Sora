@@ -1,0 +1,35 @@
+# Nano-Sora Quality Config for T4 GPU (15GB VRAM)
+# Trains longer for better results - expect 4-8 hours
+
+experiment:
+  name: "nano_sora_t4_quality"
+  seed: 42
+  output_dir: "./logs"
+  save_every: 50
+
+data:
+  batch_size: 64
+  num_workers: 4
+  num_frames: 16
+  image_size: 64
+  train_split: 0.9
+
+model:
+  patch_size: [2, 8, 8]    # Standard patches (fits T4)
+  hidden_size: 384
+  depth: 12                # Deeper than default
+  num_heads: 6
+  mlp_ratio: 4.0
+  dropout: 0.0
+
+training:
+  epochs: 500              # 5x longer than default
+  lr: 1.0e-4               # Lower, more stable LR
+  weight_decay: 0.0
+  warmup_epochs: 25
+  use_amp: true
+  grad_clip: 1.0
+  validate_every: 10
+  flow_steps: 100
+  use_ema: true
+  ema_decay: 0.9999

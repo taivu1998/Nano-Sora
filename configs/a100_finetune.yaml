@@ -1,0 +1,37 @@
+# Nano-Sora Fine-tuning Config for A100 GPU
+# Use this when resuming training to escape local minima
+
+experiment:
+  name: "nano_sora_a100_finetune"
+  seed: 42
+  output_dir: "./logs"
+  save_every: 25
+
+data:
+  data_dir: "./data"
+  batch_size: 128
+  num_workers: 4
+  num_frames: 16
+  image_size: 64
+  train_split: 0.9
+
+model:
+  # Finer patches for better quality (2048 tokens)
+  patch_size: [2, 4, 4]
+  hidden_size: 512
+  depth: 12
+  num_heads: 8
+  mlp_ratio: 4.0
+  dropout: 0.0
+
+training:
+  epochs: 5000             # Long fine-tuning run
+  lr: 3.0e-4               # Higher LR to escape local minimum
+  weight_decay: 0.0        # No weight decay for fine-tuning
+  warmup_epochs: 10        # Short warmup
+  use_amp: true
+  grad_clip: 1.0
+  validate_every: 10
+  flow_steps: 100          # More steps for better quality
+  use_ema: true
+  ema_decay: 0.9999

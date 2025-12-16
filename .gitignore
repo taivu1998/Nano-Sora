@@ -1,0 +1,78 @@
+# Heavy data files and folders
+data/
+logs/
+outputs/
+
+# Model checkpoints
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.bin
+*.h5
+
+# Large data files
+*.npy
+*.npz
+*.hdf5
+*.parquet
+*.csv
+*.json
+!configs/*.json
+
+# Jupyter notebooks (large with outputs)
+*.ipynb
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+env/
+.env
+.venv/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Weights & Biases
+wandb/
+
+# TensorBoard
+runs/
+events.out.tfevents.*
+
+# Misc
+*.log
+*.tmp
+*.temp
+.cache/

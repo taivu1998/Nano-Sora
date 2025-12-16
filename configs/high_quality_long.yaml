@@ -1,0 +1,36 @@
+# Nano-Sora HIGH QUALITY Config - Train for clear, impressive results
+# Requires: A100 GPU + 6-12 hours training time
+# Result: Clear digits with smooth motion
+
+experiment:
+  name: "nano_sora_hq"
+  seed: 42
+  output_dir: "./logs"
+  save_every: 100
+
+data:
+  batch_size: 128          # Large batch for stable training
+  num_workers: 4
+  num_frames: 16
+  image_size: 64
+  train_split: 0.9
+
+model:
+  patch_size: [2, 4, 4]    # Fine patches for detail
+  hidden_size: 512
+  depth: 12
+  num_heads: 8
+  mlp_ratio: 4.0
+  dropout: 0.0             # No dropout - we want to overfit slightly
+
+training:
+  epochs: 1000             # KEY: Train 5-10x longer!
+  lr: 1.0e-4               # Lower LR for stability
+  weight_decay: 0.0        # No weight decay
+  warmup_epochs: 50        # Longer warmup
+  use_amp: true
+  grad_clip: 1.0
+  validate_every: 25
+  flow_steps: 100          # More steps for inference
+  use_ema: true
+  ema_decay: 0.9999

@@ -1,6 +1,6 @@
 <div align="center">
 
-# Nano-Sora
+# Nano-Sora: Spacetime Diffusion Transformer (DiT) with Rectified Flow Matching
 
 ### A Minimal Diffusion Transformer for Video Generation
 
